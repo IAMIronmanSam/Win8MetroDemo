@@ -1,0 +1,56 @@
+﻿body {
+    background-color:#b6ff00; 
+    /*Nothing But Changing the Background*/
+}
+
+#contentGrid {
+    /*Show the Elements as Grid*/
+    display:-ms-grid; 
+    
+    -ms-grid-rows: 1fr 1fr;
+    /*Partioning Columns to 60% of the screen*/
+    -ms-grid-columns:60% 60%; 
+    /*Take whole height of the screen*/
+    height:100%; 
+    /*This will show the endless grid effect in Metro App*/
+    overflow:scroll; 
+}
+
+    #contentGrid div.gridLeft {
+        /* 1em is equal to 16px*/
+        margin-left:1em; 
+        margin-right:1em;
+    }
+
+    #contentGrid div.gridRight {
+        margin-right:1em;
+    }
+
+#leftContainer {
+    -ms-grid-column:1;
+    -ms-grid-row:1;
+    -ms-grid-row-span:2;
+}
+
+#topRightContainer {
+    -ms-grid-column:2;
+    -ms-grid-row:1;
+    background-color:#00ff21;
+}
+
+#bottomRightContainer {
+    -ms-grid-column:2;
+    -ms-grid-row:2;
+}
+
+@media screen and (-ms-view-state: fullscreen-landscape) {
+}
+
+@media screen and (-ms-view-state: filled) {
+}
+
+@media screen and (-ms-view-state: snapped) {
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+}
