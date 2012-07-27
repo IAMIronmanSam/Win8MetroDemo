@@ -58,6 +58,12 @@
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
     <Content Include="js\viewmodel.js" />
+    <Content Include="js\viewmodel_old.js" />
+    <Content Include="logo.png" />
+    <Content Include="smalllogo.png" />
+    <Content Include="splashscreen.png" />
+    <Content Include="Web-Windows-Marketplace-Metro-icon.png" />
+    <Content Include="Windows-8-Marketplace.jpg" />
     <None Include="GroceryStore_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

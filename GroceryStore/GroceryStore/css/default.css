@@ -1,5 +1,5 @@
 ﻿body {
-    background-color:#b6ff00; 
+    background-color:#ff6a00;
     /*Nothing But Changing the Background*/
 }
 
@@ -35,7 +35,7 @@
 #topRightContainer {
     -ms-grid-column:2;
     -ms-grid-row:1;
-    background-color:#00ff21;
+    background-color:#0094ff;
 }
 
 #bottomRightContainer {

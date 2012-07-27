@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<!-- This App Based on MVC Pattern Not Exactly Sort Of -->
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -11,6 +12,8 @@
 
     <!-- GroceryStore references -->
     <link href="/css/default.css" rel="stylesheet" />
+
+    <script src="/js/viewmodel.js"></script>
     <script src="/js/default.js"></script>
 </head>
 <body>
@@ -19,6 +22,24 @@
             <h1 class="win-type-xx-large">
                 Left Container
             </h1>
+            <div class="win-type-x-large">
+                The Last Item is <span id="listinfo"></span>
+            </div>
+            <div class="win-type-x-large">
+                <button id="addItemButton">Add Item</button>
+                <button id="removeButton">Remove Item</button>
+            </div>
+            <div class="win-type-x-large">
+                <!-- Passing The Static public Vaaible Value from ViewModel.js to HTML-->
+                The Zip Code is: <span data-win-bind="innerText:UserData.homeZipCode"></span> 
+            </div>
+            <div class="win-type-x-large">
+                <label for="newZip">
+                    Enter New ZipCode
+                </label>
+                <input id="newZip" data-win-bind="value:UserData.homeZipCode" />
+                <button id="newZipButton">Update Zip Code</button>
+            </div>
         </div>
         <div id="topRightContainer" class="gridRight">
             <h1 class="win-type-xx-large">

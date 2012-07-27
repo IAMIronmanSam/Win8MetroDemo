@@ -6,28 +6,70 @@
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
     WinJS.strictProcessing();
-
-    app.onactivated = function (args) {
-        if (args.detail.kind === activation.ActivationKind.launch) {
-            if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
-                // TODO: This application has been newly launched. Initialize
-                // your application here.
+    
+    //First Create These Functions
+    app.onactivated = function (eventObject) {
+        if (eventObject.detail.kind === activation.ActivationKind.launch) {
+            if (eventObject.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
+                performInitialSetup(eventObject); //Processing the Whole HTML and Data Source
             } else {
-                // TODO: This application has been reactivated from suspension.
-                // Restore application state here.
+                performanceRestore(eventObject);
             }
-            args.setPromise(WinJS.UI.processAll());
+            WinJS.UI.processAll();
         }
     };
 
-    app.oncheckpoint = function (args) {
-        // TODO: This application is about to be suspended. Save any state
-        // that needs to persist across suspensions here. You might use the
-        // WinJS.Application.sessionState object, which is automatically
-        // saved and restored across suspension. If you need to complete an
-        // asynchronous operation before your application is suspended, call
-        // args.setPromise().
+    app.oncheckpoint = function (eventObject) {
+        performanceSuspend(eventObject);
     };
 
     app.start();
+    //Windows 8 Application Life Cycle Running,Suspend,NotRunning
+
+    function performInitialSetup(e) {
+
+        WinJS.Utilities.query('button').listen("click", function (e) {
+            if (this.id == "addItemButton") {
+                ViewModel.UserData.addItem("IceCream", 1, "Vannila", "Walmart");
+            }
+
+            else {
+                ViewModel.UserData.getItems().pop();
+            }
+        });
+
+        var setValue = function () {
+            var list = ViewModel.UserData.getItems();
+            document.getElementById("listinfo").innerText =
+                list.getAt(list.length - 1).item;
+        };
+
+        var eventTypes = ["itemChanged","iteminserted","itemmoved","itemremoved"];
+        eventTypes.forEach(function (type){
+            ViewModel.UserData.getItems().addEventListener(type, setValue);
+       
+        
+        
+            //This will process the Entire Document and the 2nd Argument to use ViewModel as Data Source
+        //WinJS.Binding.processAll(document.body, ViewModel);
+
+            //Action For Button Click Event
+            //This statement search for newZipButton id and listern click event on it
+           // WinJS.Utilities.query('#newZipButton').listen("click", function (e) { 
+
+            //Update the homeZipCode value from User in RunTime
+            //WinJs.utilities.query is equalent to $ in jQuery
+           // ViewModel.UserData.homeZipCode = WinJS.Utilities.query('#newZip')[0].value;
+
+        });
+        setValue();
+    }
+
+    function performRestore(e) { }
+
+    function performSuspend(e) { }
+
+   
+
+    
 })();
